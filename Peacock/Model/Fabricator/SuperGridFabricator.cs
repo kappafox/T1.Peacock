@@ -12,6 +12,7 @@ namespace Peacock.Model.Fabricator
         public Grid Fabricate()
         {
             var superGrid = new Grid();
+            superGrid.SnapsToDevicePixels = true;
 
             for (int i = 0; i <= 6; i++)
             {
@@ -32,6 +33,7 @@ namespace Peacock.Model.Fabricator
             for (int i = 0; i <= 6; i++)
             {
                 var dockPanel = new DockPanel();
+
                 var brush = EasyColour.LinearGradientBrushFromHex(DisplayConstants.Colours.GridView.HeaderRowGradientStart,
                                                                   DisplayConstants.Colours.GridView.HeaderRowGradientEnd,
                                                                   90.0);
@@ -48,20 +50,20 @@ namespace Peacock.Model.Fabricator
                 Grid.SetRow(borderBot, 0);
                 Grid.SetColumn(borderBot, i);
 
-                /*
-                var borderRight = BorderFactory.BevelRight(SuperGridColours.HeaderRowBorderTop);
+                var borderRight = BorderFactory.BevelRight(SuperGridColours.HeaderRowBorderBottom);
                 Grid.SetRow(borderRight, 0);
                 Grid.SetColumn(borderRight, i);
-                 */
+                borderRight.SnapsToDevicePixels = true;
 
                 var borderLeft = BorderFactory.BevelLeft(SuperGridColours.HeaderRowBorderLeft);
                 Grid.SetRow(borderLeft, 0);
                 Grid.SetColumn(borderLeft, i);
+                borderLeft.SnapsToDevicePixels = true;
 
                 superGrid.Children.Add(dockPanel);
                 superGrid.Children.Add(borderTop);
                 superGrid.Children.Add(borderBot);
-                // superGrid.Children.Add(borderRight);
+                superGrid.Children.Add(borderRight);
                 superGrid.Children.Add(borderLeft);
             }
 
