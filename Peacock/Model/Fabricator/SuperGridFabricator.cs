@@ -53,12 +53,10 @@ namespace Peacock.Model.Fabricator
                 var borderRight = BorderFactory.BevelRight(SuperGridColours.HeaderRowBorderBottom);
                 Grid.SetRow(borderRight, 0);
                 Grid.SetColumn(borderRight, i);
-                borderRight.SnapsToDevicePixels = true;
 
                 var borderLeft = BorderFactory.BevelLeft(SuperGridColours.HeaderRowBorderLeft);
                 Grid.SetRow(borderLeft, 0);
                 Grid.SetColumn(borderLeft, i);
-                borderLeft.SnapsToDevicePixels = true;
 
                 superGrid.Children.Add(dockPanel);
                 superGrid.Children.Add(borderTop);
