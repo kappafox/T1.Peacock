@@ -18,6 +18,7 @@ namespace Peacock.Model.Fabricator
 
             window.Height = DisplayConstants.Dimensions.Forms.WindowHeight;
             window.Width = DisplayConstants.Dimensions.Forms.WindowWidth;
+            window.SnapsToDevicePixels = true;
 
             var bc = new BrushConverter();
 

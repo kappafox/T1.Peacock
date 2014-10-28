@@ -83,6 +83,7 @@ namespace Peacock.Model.Constants
                 public static class SuperGrid
                 {
                     public const long TableHeaderHeight = 31;
+                    public const long RowHeight = 24;
                 }
             }
 
@@ -99,4 +100,7 @@ public static class SuperGridColours
     public static string HeaderRowBorderTop = "#F8F9FA";
     public static string HeaderRowBorderBottom = "#BBC3C6";
     public static string HeaderRowBorderLeft = "#F7F8F9";
+    public const string RowBorder = "#CCD1D3";
+    public const string EvenRowGrey = "#F4F4F5";
+    public const string OddRowGrey = "#E9E9EB";
 }

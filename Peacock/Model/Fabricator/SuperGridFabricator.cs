@@ -21,6 +21,7 @@ namespace Peacock.Model.Fabricator
             }
 
             CreateTableHeader(superGrid);
+            CreateRows(superGrid);
             return superGrid;
         }
 
@@ -66,6 +67,49 @@ namespace Peacock.Model.Fabricator
             }
 
 
+        }
+
+        private void CreateRows(Grid superGrid)
+        {
+            for (int i = 1; i <= 20; i++)
+            {
+                var rowDef = new RowDefinition();
+                rowDef.Height = new GridLength(DisplayConstants.Dimensions.Forms.SuperGrid.RowHeight);
+                superGrid.RowDefinitions.Add(rowDef);
+
+                for (int j = 0; j <= 6; j++)
+                {
+                    var dp = new DockPanel();
+
+                    if (i % 2 != 0)
+                    {
+                        dp.Background = EasyColour.BrushFromHex(SuperGridColours.EvenRowGrey);
+                    }
+                    else
+                    {
+                        dp.Background = EasyColour.BrushFromHex(SuperGridColours.OddRowGrey);
+                    }
+
+                    var border = BorderFactory.BevelTop(SuperGridColours.RowBorder);
+                    Grid.SetColumn(dp, j);
+                    Grid.SetRow(dp, i);
+
+                    Grid.SetColumn(border, j);
+                    Grid.SetRow(border, i);
+
+                    superGrid.Children.Add(dp);
+                    superGrid.Children.Add(border);
+
+                    if (j != 6)
+                    {
+                        var borderRight = BorderFactory.BevelRight(SuperGridColours.RowBorder);
+                        Grid.SetColumn(borderRight, j);
+                        Grid.SetRow(borderRight, i);
+
+                        superGrid.Children.Add(borderRight);
+                    }
+                }
+            }
         }
     }
 }
