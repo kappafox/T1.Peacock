@@ -19,6 +19,9 @@ namespace Peacock.Model.Fabricator
             row.Height = new GridLength(DisplayConstants.Dimensions.Forms.RdpSection.TitleBarHeight);
             contentGrid.RowDefinitions.Add(row);
 
+            var title = Labels.SectionTitle();
+            EasyLayout.SetPosition(contentGrid, title, 0, 0);
+
             // Header Bar : Row 1
             row = new RowDefinition();
             row.Height = new GridLength(DisplayConstants.Dimensions.Forms.RdpSection.HeaderBarHeight);

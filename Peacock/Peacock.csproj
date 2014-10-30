@@ -75,6 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Constants\DisplayConstants.cs" />
+    <Compile Include="Model\Constants\Fonts.cs" />
+    <Compile Include="Model\Constants\Labels.cs" />
     <Compile Include="Model\Element.cs" />
     <Compile Include="Model\Fabricator\Fabricator.cs" />
     <Compile Include="Model\Fabricator\MaintenanceFormFabricator.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Model\Screen.cs" />
     <Compile Include="Model\Structure\IElementBase.cs" />
     <Compile Include="Model\Utility\EasyColour.cs" />
+    <Compile Include="Model\Utility\EasyLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

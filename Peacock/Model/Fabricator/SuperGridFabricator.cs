@@ -6,6 +6,7 @@ namespace Peacock.Model.Fabricator
     using Peacock.Model.Utility;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
 
     public class SuperGridFabricator
     {
@@ -59,11 +60,26 @@ namespace Peacock.Model.Fabricator
                 Grid.SetRow(borderLeft, 0);
                 Grid.SetColumn(borderLeft, i);
 
+
+
                 superGrid.Children.Add(dockPanel);
                 superGrid.Children.Add(borderTop);
                 superGrid.Children.Add(borderBot);
                 superGrid.Children.Add(borderRight);
                 superGrid.Children.Add(borderLeft);
+
+
+
+                var label = Labels.SuperGridTitle();
+                EasyLayout.SetPosition(superGrid, label, 0, i);
+
+                var split = new GridSplitter();
+                split.HorizontalAlignment = HorizontalAlignment.Right;
+                split.ResizeDirection = GridResizeDirection.Columns;
+                split.Background = new SolidColorBrush(Colors.Transparent);
+                split.Width = 5;
+
+                EasyLayout.SetPosition(superGrid, split, 0, i);
             }
 
 
@@ -71,7 +87,7 @@ namespace Peacock.Model.Fabricator
 
         private void CreateRows(Grid superGrid)
         {
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 25; i++)
             {
                 var rowDef = new RowDefinition();
                 rowDef.Height = new GridLength(DisplayConstants.Dimensions.Forms.SuperGrid.RowHeight);
@@ -81,13 +97,16 @@ namespace Peacock.Model.Fabricator
                 {
                     var dp = new DockPanel();
 
-                    if (i % 2 != 0)
+                    if (i <= 20)
                     {
-                        dp.Background = EasyColour.BrushFromHex(SuperGridColours.EvenRowGrey);
-                    }
-                    else
-                    {
-                        dp.Background = EasyColour.BrushFromHex(SuperGridColours.OddRowGrey);
+                        if (i % 2 != 0)
+                        {
+                            dp.Background = EasyColour.BrushFromHex(SuperGridColours.EvenRowGrey);
+                        }
+                        else
+                        {
+                            dp.Background = EasyColour.BrushFromHex(SuperGridColours.OddRowGrey);
+                        }
                     }
 
                     var border = BorderFactory.BevelTop(SuperGridColours.RowBorder);
@@ -100,7 +119,7 @@ namespace Peacock.Model.Fabricator
                     superGrid.Children.Add(dp);
                     superGrid.Children.Add(border);
 
-                    if (j != 6)
+                    if (j != 6 && i <= 20)
                     {
                         var borderRight = BorderFactory.BevelRight(SuperGridColours.RowBorder);
                         Grid.SetColumn(borderRight, j);
